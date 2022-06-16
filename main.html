@@ -1,0 +1,118 @@
+<!doctype html>
+<style>
+    form {
+        margin: auto;
+        width: 35%;
+        font-family: 'Helvetica', 'Arial', sans-serif;
+        font-size: 18px;
+        color: rgb(12,8,77);
+        background-color: rgba(162, 202, 252, 0.348);
+        box-shadow: 4px 4px 5px rgb(12, 8, 77);
+        border: 3px solid rgb(12, 8, 77);
+        border-radius:  5px;
+    }
+
+    .result {
+        margin: auto;
+        width: 35%;
+        font-family: 'Helvetica', 'Arial', sans-serif
+    }
+
+    .button {
+        font-size: 16px; 
+        font-family: 'Helvetica', 'Arial', serif;
+        font-weight: bolder;
+        width: 160px;
+        height: 30px;
+        background: -moz-linear-gradient(#17065d, rgba(146, 189, 253, 0.81), );
+        background: -webkit-gradient(linear, 0 0, 0 100%, from(#17065d), to(#8ab5ffb6));
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#17065d', endColorstr='#8ab5ffb6');
+        padding: 3px 7px;
+        color: rgb(255, 255, 255);
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px solid rgb(79, 79, 79);
+    }
+
+    .footer-author{
+        color: rgb(12,8,77);
+        font-size: 12px;
+    }
+</style>
+
+<head>
+    <title>Прогноз модуля упругости при растяжении</title>
+</head>
+
+<form action="{{url_for('main')}}" method="POST">
+    <fieldset>
+        <legend><b>Введите значения</b></legend>
+        <br>
+        Плотность, кг/м^3
+        <input name = "plotnost" type="number" style="float:right"
+        required>
+        <br>
+        <br>
+        Модуль упругости, ГПа
+        <input name = "modul_upr" type="number" style="float:right"
+        required>
+        <br>
+        <br>
+        Количество отвердителя, м
+        <input name = "otverditel" type="number" style="float:right"
+        required>
+        <br>
+        <br>
+        Содержание эпоксидных групп
+        <input name = "epox_group" type="number" style="float:right"
+        required>
+        <br>
+        <br>
+        Температура вспышки, С2
+        <input name = "t_vspiski" type="number" style="float:right"
+        required>
+        <br>
+        <br>
+        Поверхностная плотность, г/м^2
+        <input name = "pov_plotnost" type="number" style="float:right"
+        required>
+        <br>
+        <br>
+        Потребление смолы, г/м^2
+        <input name = "potreb_smoli" type="number" style="float:right"
+        required>
+        <br>
+        <br>
+        Шаг нашивки
+        <input name = "_step_nashivki" type="number" style="float:right"
+        required>
+        <br>
+        <br>
+        Плотность нашивки
+        <input name = "plot_nashivki" type="number" style="float:right"
+        required>
+        <br>
+        <br>
+        Угол нашивки
+        <input name = "ugol_nashivki" type="number" style="float:right"
+        required>
+        <br>
+        <br>
+        <input class="button" type="submit" value="РАССЧИТАТЬ">
+    </fieldset>
+</form>
+
+<div class="result" align="center">
+    {% if result %}
+        <br>
+        <p style="font-size: 22px">
+        Прогноз модуля упругости при растяжении (<i>нормализованное значение</i>)
+        </p>
+        <p style="font-size: 24px"><b>{{result}}</b></p>
+    {% endif %}
+    <footer class="footer">
+        <p class='footer-author'>
+            <font>©2022 Ekaterina Tao</font></p>
+      </footer>
+</div>
